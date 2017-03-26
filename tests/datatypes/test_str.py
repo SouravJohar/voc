@@ -594,7 +594,6 @@ class StrTests(TranspileTestCase):
             except TypeError as err:
                 print(err)
             """)
-        
 
 
 class UnaryStrOperationTests(UnaryOperationTestCase, TranspileTestCase):
