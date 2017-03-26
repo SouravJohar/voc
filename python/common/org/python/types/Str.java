@@ -1315,15 +1315,15 @@ public class Str extends org.python.types.Object {
         }
         int count = 0;
         int index = 1;
-        int flag =0;
+        int flag = 0;
         while (true){
           if (this.value.toString().charAt(this.value.toString().length() - index) == '\n'){
             count++;
             index++;
           }
           else{
-            if (count == 0){
-            flag =1;}
+            if (count == 0)
+              flag =1;
             break;
           }
         }
