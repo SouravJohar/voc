@@ -1304,26 +1304,27 @@ public class Str extends org.python.types.Object {
     )
     public org.python.Object splitlines(org.python.Object num) {
       int number;
-        if (num == null)
-            {number = 0;}
-        else{
-            if (num instanceof org.python.types.Int)
-            {
-                number = java.lang.Integer.parseInt(num.toString());}
+        if (num == null) {
+            number = 0;
+          }
+        else {
+            if (num instanceof org.python.types.Int) {
+                number = java.lang.Integer.parseInt(num.toString());
+              }
             else
                 throw new org.python.exceptions.TypeError("num agrument should be an integer, not " + num.typeName());
         }
         int count = 0;
         int index = 1;
         int flag = 0;
-        while (true){
-          if (this.value.toString().charAt(this.value.toString().length() - index) == '\n'){
+        while (true) {
+          if (this.value.toString().charAt(this.value.toString().length() - index) == '\n') {
             count++;
             index++;
           }
-          else{
+          else {
             if (count == 0)
-              flag =1;
+              flag = 1;
             break;
           }
         }
@@ -1336,20 +1337,20 @@ public class Str extends org.python.types.Object {
             else
               result.append(new org.python.types.Str(lines[i] + "\\n"));
          }
-         if (flag == 0){
+         if (flag == 0) {
            if (number != 0)
             result.append(new org.python.types.Str(lines[lines.length-1]+ "\\n"));
            else
             result.append(new org.python.types.Str(lines[lines.length-1]));
          }
-         if (flag == 1){
+         if (flag == 1) {
            if(count > 0)
              result.append(new org.python.types.Str(lines[lines.length-1]+ "\\n"));
            else
             result.append(new org.python.types.Str(lines[lines.length-1]));
           }
          int i;
-         for (i=0;i<count-1;i++){
+         for (i = 0; i < count - 1; i++) {
            if (number == 0)
             result.append(new org.python.types.Str(""));
            else
