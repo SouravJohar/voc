@@ -573,7 +573,7 @@ class StrTests(TranspileTestCase):
             except TypeError as err:
                 print(err)
             """)
-        
+
     def test_splitlines(self):
         self.assertCodeExecution("""
             st="Today\n\n has been a \n good \n day. \n\n"
