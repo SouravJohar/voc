@@ -181,7 +181,8 @@ class StrTests(TranspileTestCase):
             print(x[1:])
             """)
 
-        # Right bound slice
+        # Right bound slicesplit
+        
         self.assertCodeExecution("""
             x = "12345"
             print(x[:4])
@@ -573,6 +574,27 @@ class StrTests(TranspileTestCase):
             except TypeError as err:
                 print(err)
             """)
+    def test_splitlines(self):
+        self.assertCodeExecution("""
+            st="Today\n\n has been a \n good \n day. \n\n"
+            try:
+                print(st.splitlines(0))
+            except TypeError as err:
+                print(err)
+            try:
+                print(st.splitlines(-1))
+            except TypeError as err:
+                print(err)
+            try:
+                print(st.splitlines())
+            except TypeError as err:
+                print(err)
+            try:
+                print(st.splitlines(10))
+            except TypeError as err:
+                print(err)
+            """)
+        
 
 
 class UnaryStrOperationTests(UnaryOperationTestCase, TranspileTestCase):
