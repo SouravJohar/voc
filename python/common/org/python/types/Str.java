@@ -1304,6 +1304,9 @@ public class Str extends org.python.types.Object {
     )
     public org.python.Object splitlines(org.python.Object num) {
         int number;
+        int count = 0;
+        int index = 1;
+        int flag = 0;
         if (num == null) {
             number = 0;
         } else {
@@ -1313,9 +1316,6 @@ public class Str extends org.python.types.Object {
                 throw new org.python.exceptions.TypeError("num agrument should be an integer, not " + num.typeName());
             }
         }
-        int count = 0;
-        int index = 1;
-        int flag = 0;
         while (true) {
             if (this.value.toString().charAt(this.value.toString().length() - index) == '\n' && index < this.value.toString().length()) {
                 count++;
