@@ -1300,7 +1300,8 @@ public class Str extends org.python.types.Object {
                     "\n" +
                     "Return a list of the lines in S, breaking at line boundaries.\n" +
                     "Line breaks are not included in the resulting list unless keepends\n" +
-                    "is given and true.\n"
+                    "is given and true.\n",
+            default_args = {"num"}
     )
     public org.python.Object splitlines(org.python.Object num) {
         int number;
@@ -1336,30 +1337,30 @@ public class Str extends org.python.types.Object {
             } else {
                 result.append(new org.python.types.Str(lines[i] + "\\n"));
             }
-         }
-         if (flag == 0) {
-           if (number != 0) {
-              result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
-           } else {
-              result.append(new org.python.types.Str(lines[lines.length - 1]));
-           }
-         }
-         if (flag == 1) {
-             if(count > 0) {
-                 result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
-             } else {
-                 result.append(new org.python.types.Str(lines[lines.length - 1]));
-             }
-          }
-         int i;
-         for (i = 0; i < count - 1; i++) {
-             if (number == 0) {
-                 result.append(new org.python.types.Str(""));
-             } else {
-                 result.append(new org.python.types.Str("\\n"));
-             }
-         }
-         return result;
+        }
+        if (flag == 0) {
+            if (number != 0) {
+                result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
+            } else {
+                result.append(new org.python.types.Str(lines[lines.length - 1]));
+            }
+        }
+        if (flag == 1) {
+            if (count > 0) {
+                result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
+            } else {
+                result.append(new org.python.types.Str(lines[lines.length - 1]));
+            }
+        }
+        int i;
+        for (i = 0; i < count - 1; i++) {
+            if (number == 0) {
+                result.append(new org.python.types.Str(""));
+            } else {
+                result.append(new org.python.types.Str("\\n"));
+            }
+        }
+        return result;
     }
 
     @org.python.Method(
