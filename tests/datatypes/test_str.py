@@ -576,7 +576,7 @@ class StrTests(TranspileTestCase):
 
     def test_splitlines(self):
         self.assertCodeExecution("""
-            st="Today\n\n has been a \n good \n day. \n\n"
+            st="Today\\n\\n has been a \\n good \\n day. \\n\\n"
             try:
                 print(st.splitlines(0))
             except TypeError as err:
