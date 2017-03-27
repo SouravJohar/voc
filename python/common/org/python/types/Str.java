@@ -1306,12 +1306,10 @@ public class Str extends org.python.types.Object {
         int number;
         if (num == null) {
             number = 0;
-        }
-        else {
+        } else {
             if (num instanceof org.python.types.Int) {
                 number = java.lang.Integer.parseInt(num.toString());
-            }
-            else {
+            } else {
                 throw new org.python.exceptions.TypeError("num agrument should be an integer, not " + num.typeName());
             }
         }
@@ -1319,16 +1317,15 @@ public class Str extends org.python.types.Object {
         int index = 1;
         int flag = 0;
         while (true) {
-            if (this.value.toString().charAt(this.value.toString().length() - index) == '\n') {
+            if (this.value.toString().charAt(this.value.toString().length() - index) == '\n' && index < this.value.toString().length()) {
                 count++;
                 index++;
+            } else {
+                if (count == 0) {
+                    flag = 1;
+                }
+                break;
             }
-          else {
-            if (count == 0) {
-              flag = 1;
-            }
-            break;
-          }
         }
         java.lang.String[] lines;
         org.python.types.List result = new org.python.types.List();
@@ -1336,24 +1333,21 @@ public class Str extends org.python.types.Object {
         for (int i = 0; i < lines.length - 1; i++) {
             if (number == 0) {
                 result.append(new org.python.types.Str(lines[i]));
-            }
-            else {
+            } else {
                 result.append(new org.python.types.Str(lines[i] + "\\n"));
             }
          }
          if (flag == 0) {
            if (number != 0) {
               result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
-           }
-           else {
+           } else {
               result.append(new org.python.types.Str(lines[lines.length - 1]));
            }
          }
          if (flag == 1) {
              if(count > 0) {
                  result.append(new org.python.types.Str(lines[lines.length - 1] + "\\n"));
-             }
-             else {
+             } else {
                  result.append(new org.python.types.Str(lines[lines.length - 1]));
              }
           }
@@ -1361,8 +1355,7 @@ public class Str extends org.python.types.Object {
          for (i = 0; i < count - 1; i++) {
              if (number == 0) {
                  result.append(new org.python.types.Str(""));
-             }
-             else {
+             } else {
                  result.append(new org.python.types.Str("\\n"));
              }
          }
